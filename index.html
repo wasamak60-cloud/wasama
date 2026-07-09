@@ -1,279 +1,304 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pizza House</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ali razaPizzaHouse - Premium Crusts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --dark-color: #2f3542;
+            --light-color: #f1f2f6;
+            --accent-color: #ffa502;
+        }
 
-<!-- Bootstrap 5 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            scroll-behavior: smooth;
+        }
 
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        /* Navbar Customization */
+        .navbar {
+            background-color: rgba(47, 53, 66, 0.95) !important;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+        .nav-link {
+            color: #fff !important;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
 
-<style>
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#111;
-}
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
 
-.navbar{
-    background:rgba(0,0,0,.85);
-    backdrop-filter:blur(8px);
-}
+        /* Pizza Floating Animation */
+        .floating-pizza {
+            animation: float 4s ease-in-out infinite;
+            max-width: 100%;
+            height: auto;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
 
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
-    url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80');
-    background-size:cover;
-    background-position:center;
-}
+        /* Menu Section Card Hover Effects */
+        .pizza-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #fff;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .pizza-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .pizza-card img {
+            transition: transform 0.5s ease;
+        }
+        .pizza-card:hover img {
+            transform: scale(1.1);
+        }
 
-.hero h1{
-    font-size:4rem;
-    font-weight:800;
-}
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 50px;
+        }
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-.hero span{
-    color:#ffc107;
-}
-
-.btn-warning{
-    padding:12px 28px;
-    font-weight:bold;
-}
-
-.card{
-    border:none;
-    transition:.4s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-}
-
-.card img{
-    height:230px;
-    object-fit:cover;
-}
-
-.feature-box{
-    background:#fff;
-    border-radius:15px;
-    padding:30px;
-    transition:.4s;
-}
-
-.feature-box:hover{
-    transform:translateY(-8px);
-}
-
-footer{
-    background:#000;
-}
-</style>
-
+        /* Buttons */
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            padding: 10px 25px;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #e03d4f;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+    </style>
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand animate__animated animate__fadeInLeft" href="#"><i class="fas fa-pizza-slice me-2"></i>ali razaPizzaHouse</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-white"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto animate__animated animate__fadeInRight">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<a class="navbar-brand fw-bold fs-3" href="#">
-🍕 PizzaHouse
-</a>
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-lg-start text-center animate__animated animate__fadeInLeft">
+                    <h1 class="display-3 fw-bold mb-3 text-white">Hot & Spicy <span style="color: var(--primary-color);">Pizza</span></h1>
+                    <p class="lead text-white-50 mb-4">Experience the ultimate fusion of fresh mozzarella, robust Italian tomato sauce, and perfectly baked golden dough.</p>
+                    <a href="#menu" class="btn btn-custom btn-lg">View Our Menu</a>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0 animate__animated animate__fadeInRight">
+                    <img src="https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=500&q=80" alt="Animated Pizza" class="img-fluid rounded-circle floating-pizza shadow-lg" style="width: 400px; height: 400px; object-fit: cover; border: 8px solid rgba(255,255,255,0.1);">
+                </div>
+            </div>
+        </div>
+    </section>
 
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-<span class="navbar-toggler-icon"></span>
-</button>
+    <section id="menu" class="bg-white">
+        <div class="container">
+            <h2 class="text-center section-title">Our Signature Menu</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card pizza-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Pepperoni" style="height: 250px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold">Classic Pepperoni</h5>
+                                <p class="card-text text-muted">A timeless Italian masterpiece topped with premium spicy pepperoni and loaded with melted gooey cheese.</p>
+                            </div>
+                            <button class="btn btn-custom mt-3 w-100" onclick="openOrderModal('Classic Pepperoni')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card pizza-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Veggie Supreme" style="height: 250px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold">Veggie Supreme</h5>
+                                <p class="card-text text-muted">Bursting with vibrant colors of bell peppers, black olives, onions, and sweet corn on a crispy base.</p>
+                            </div>
+                            <button class="btn btn-custom mt-3 w-100" onclick="openOrderModal('Veggie Supreme')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card pizza-card shadow-sm h-100">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="BBQ Chicken" style="height: 250px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <h5 class="card-title fw-bold">Smokey BBQ Chicken</h5>
+                                <p class="card-text text-muted">Tender grilled chicken chunks glazed in smoky BBQ sauce combined with crispy red onions and cilantro.</p>
+                            </div>
+                            <button class="btn btn-custom mt-3 w-100" onclick="openOrderModal('Smokey BBQ Chicken')">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="collapse navbar-collapse" id="menu">
+    <section id="about" style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="text-center section-title">About Our Passion</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <img src="https://images.unsplash.com/photo-1571066811602-71683a3f680d?auto=format&fit=crop&w=600&q=80" alt="Chef making pizza" class="img-fluid rounded-3 shadow">
+                </div>
+                <div class="col-md-6">
+                    <h3 class="fw-bold mb-3">Crafting Happiness Since 2020</h3>
+                    <p class="text-muted">At ali razaPizzaHouse, we believe pizza is more than just food; it’s an art form. We harvest fresh ingredients daily and bake every pie with absolute devotion.</p>
+                    <p class="text-muted">Our traditional brick ovens ensure a signature charred crust that locks in maximum flavor and authenticity in every single bite.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
-<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-</ul>
+    <section id="contact" class="bg-white">
+        <div class="container">
+            <h2 class="text-center section-title">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card p-4 shadow-sm border-0 bg-light">
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control" rows="5" placeholder="Your Message or Special Catering Request" required></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-custom w-50">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">&copy; 2026 ali razaPizzaHouse. All Rights Reserved. Crafted with ❤️.</p>
+    </footer>
 
-</div>
-</nav>
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold" id="modalPizzaName">Select Pizza Size</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 text-center">
+                    <p class="text-muted mb-4">Choose the perfect size for your cravings:</p>
+                    <div class="d-grid gap-3">
+                        <button class="btn btn-outline-dark p-3 text-start d-flex justify-content-between align-items-center" onclick="confirmOrder('Small')">
+                            <span><i class="fas fa-pizza-slice me-2 fs-5 text-secondary"></i> Small (8")</span>
+                            <span class="badge bg-secondary">$7.99</span>
+                        </button>
+                        <button class="btn btn-outline-dark p-3 text-start d-flex justify-content-between align-items-center" onclick="confirmOrder('Medium')">
+                            <span><i class="fas fa-pizza-slice me-2 fs-4 text-warning"></i> Medium (12")</span>
+                            <span class="badge bg-warning text-dark">$12.99</span>
+                        </button>
+                        <button class="btn btn-outline-dark p-3 text-start d-flex justify-content-between align-items-center" onclick="confirmOrder('Large')">
+                            <span><i class="fas fa-pizza-slice me-2 fs-3 text-danger"></i> Large (16")</span>
+                            <span class="badge bg-danger">$16.99</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- Hero -->
-<section class="hero">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        let selectedPizza = '';
+        let bootstrapModal;
 
-<div class="container">
+        document.addEventListener('DOMContentLoaded', function() {
+            bootstrapModal = new bootstrap.Modal(document.getElementById('orderModal'));
+        });
 
-<div class="row align-items-center">
+        function openOrderModal(pizzaName) {
+            selectedPizza = pizzaName;
+            document.getElementById('modalPizzaName').innerText = `Order: ${pizzaName}`;
+            bootstrapModal.show();
+        }
 
-<div class="col-lg-6 text-white">
+        function confirmOrder(size) {
+            bootstrapModal.hide();
+            alert(`🎉 Amazing Choice! Your order for a [${size}] ${selectedPizza} has been received. Preparing your fresh crust!`);
+        }
 
-<h1>Best <span>Italian Pizza</span> In Town</h1>
-
-<p class="lead my-4">
-Fresh ingredients, crispy crust, melting cheese and fast delivery.
-Taste the best pizza experience today.
-</p>
-
-<a href="#" class="btn btn-warning btn-lg me-3">
-Order Now
-</a>
-
-<a href="#" class="btn btn-outline-light btn-lg">
-View Menu
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Popular Pizza -->
-<section class="py-5 bg-light">
-
-<div class="container">
-
-<div class="text-center mb-5">
-<h2 class="fw-bold">Popular Pizzas</h2>
-<p>Our customers' favorite choices.</p>
-</div>
-
-<div class="row g-4">
-
-<div class="col-md-4">
-<div class="card shadow">
-<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80" class="card-img-top">
-<div class="card-body text-center">
-<h4>Pepperoni</h4>
-<p>Loaded with cheese & pepperoni.</p>
-<button class="btn btn-warning">Order</button>
-</div>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card shadow">
-<img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?auto=format&fit=crop&w=700&q=80" class="card-img-top">
-<div class="card-body text-center">
-<h4>Cheese Pizza</h4>
-<p>Extra mozzarella with soft crust.</p>
-<button class="btn btn-warning">Order</button>
-</div>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card shadow">
-<img src="https://images.unsplash.com/photo-1548365328-9f547fb0953b?auto=format&fit=crop&w=700&q=80" class="card-img-top">
-<div class="card-body text-center">
-<h4>Veggie Pizza</h4>
-<p>Healthy vegetables with fresh cheese.</p>
-<button class="btn btn-warning">Order</button>
-</div>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Features -->
-<section class="py-5">
-
-<div class="container">
-
-<div class="row g-4">
-
-<div class="col-md-4">
-<div class="feature-box text-center shadow">
-<i class="bi bi-truck fs-1 text-warning"></i>
-<h4 class="mt-3">Fast Delivery</h4>
-<p>Delivery in 30 minutes.</p>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="feature-box text-center shadow">
-<i class="bi bi-star-fill fs-1 text-warning"></i>
-<h4 class="mt-3">Premium Quality</h4>
-<p>Fresh ingredients every day.</p>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="feature-box text-center shadow">
-<i class="bi bi-emoji-smile fs-1 text-warning"></i>
-<h4 class="mt-3">Happy Customers</h4>
-<p>Thousands of satisfied customers.</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
-<section class="py-5 bg-warning text-center">
-
-<div class="container">
-
-<h2 class="fw-bold">Get 30% OFF Your First Order</h2>
-
-<p class="mb-4">
-Limited Time Offer
-</p>
-
-<a href="#" class="btn btn-dark btn-lg">
-Order Now
-</a>
-
-</div>
-
-</section>
-
-<!-- Footer -->
-<footer class="text-center text-white py-4">
-
-<div class="container">
-
-<h4>🍕 PizzaHouse</h4>
-
-<p class="mb-2">
-Fresh Pizza • Fast Delivery • Best Taste
-</p>
-
-<div class="mb-3">
-<i class="bi bi-facebook fs-4 mx-2"></i>
-<i class="bi bi-instagram fs-4 mx-2"></i>
-<i class="bi bi-twitter-x fs-4 mx-2"></i>
-</div>
-
-<p class="mb-0">
-ali raza PizzaHouse. All Rights Reserved.
-</p>
-
-</div>
-
-</footer>
-
-<!-- Bootstrap Bundle JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-
+        // Contact Form Simple Validation Alert
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('📬 Thank you for contacting ali razaPizzaHouse! We will get back to you shortly.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
-
